@@ -1,14 +1,18 @@
 import { Usuario } from "@/core/model/Usuario"
-import usuariosData from "../../data/constants/usuarios"
 import Image from "next/image"
+
 interface LinhaUsuarioProps{
-    usuario: Usuario
+    usuario: Usuario // lista Mocada
+    usuarios: Usuario[]
+    onClick?: (usuario: Usuario) => void
 }
 
 function LinhaUsuario(props: LinhaUsuarioProps){
     return(
-        <div className="flex p-3 bg-zinc-900 px-5 rounded-lg hover:border cursor-pointer">
-            <Image
+        <div className="flex p-3 bg-zinc-900 px-5 rounded-lg hover:border cursor-pointer"
+            onClick={ () => props.onClick?.(props.usuario)}
+        >
+              <Image
                 src={props.usuario.foto} 
                 width={80}
                 height={80}
@@ -23,11 +27,11 @@ function LinhaUsuario(props: LinhaUsuarioProps){
     )
 }
 
-export default function ListaUsuario(){
+export default function ListaUsuario(props: LinhaUsuarioProps){
     return(
         <div className="flex flex-col gap-5 rounded-md">
-            {usuariosData.map((usuario: Usuario) => {
-                return <LinhaUsuario key={usuario.id} usuario={usuario} />
+            {props.usuarios.map((usuario: Usuario) => {
+                return <LinhaUsuario key={usuario.id} usuario={usuario} onClick={props.onClick} />
             })}
         </div>
     )
