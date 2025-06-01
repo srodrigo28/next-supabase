@@ -3,6 +3,15 @@
 npm install prisma --save-dev
 ```
 
+* React Forms
+```
+https://www.npmjs.com/package/react-hook-form
+```
+
+```
+npm i react-hook-form
+```
+
 ```
 npx prisma init --datasource-provider sqlite
 ```
